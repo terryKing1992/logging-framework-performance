@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+
+    <Properties>
+        <property name="LOG_NAME">./logs</property>
+        <property name="LOG_LEVEL">info</property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
+
+        </Console>
+
+        <RollingFile name="randomAccessFile" fileName="${LOG_NAME}/log_info.log" filePattern="${LOG_NAME}/info/log-info-%d{yyyy-MM-dd}.%i.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1" />
+                <SizeBasedTriggeringPolicy size="100M" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!--<AsyncLogger name="com.terrylmay.controller" level="info">-->
+            <!--<AppenderRef ref="randomAccessFile"></AppenderRef>-->
+        <!--</AsyncLogger>-->
+        <Root level="info">
+            <!--<AppenderRef ref="Console" />-->
+            <AppenderRef ref="randomAccessFile" />
+        </Root>
+    </Loggers>
+</configuration>
