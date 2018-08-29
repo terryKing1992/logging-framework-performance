@@ -14,13 +14,14 @@ public class HelloWorldController {
     }
 
     public static void main(String[] args) throws InterruptedException {
+        System.setProperty("log4j2.contextSelector", "org.apache.logging.log4j.core.async.AsyncLoggerContextSelector");
         Long startTime = System.currentTimeMillis();
-        int threadCount = 2;
+        int threadCount = 16;
         final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
         for (int index = 0; index < threadCount; index++) {
             new Thread(new Runnable() {
                 public void run() {
-                    for (int i = 0; i < 2000000; i++) {
+                    for (int i = 0; i < 100000; i++) {
                         logging();
                     }
                     countDownLatch.countDown();

@@ -20,12 +20,9 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <!--<AsyncLogger name="com.terrylmay.controller" level="info">-->
-            <!--<AppenderRef ref="randomAccessFile"></AppenderRef>-->
-        <!--</AsyncLogger>-->
-        <Root level="info">
-            <!--<AppenderRef ref="Console" />-->
+        <AsyncRoot level="info">
+            <AppenderRef ref="Console" />
             <AppenderRef ref="randomAccessFile" />
-        </Root>
+        </AsyncRoot>
     </Loggers>
 </configuration>
